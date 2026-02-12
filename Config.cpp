@@ -50,7 +50,6 @@ float deltaPWEC = 0.02f;
 
 // Sensor poll interval
 uint32_t sensorIntervalMs = 5000;
-bool historyEnabled = true;
 
 // Debug + WebSerial
 bool debugMode = false;
@@ -70,6 +69,14 @@ const char* NS_SYSTEM = "system_prefs";
 
 // Sensor type default
 SensorType sensorType = SENSOR_THCS;
+
+// [ADDED] Clamp helper to keep prefs safe
+static SensorType clampSensorType(int raw) {
+  if (raw == (int)SENSOR_THCS) return SENSOR_THCS;
+  if (raw == (int)SENSOR_MEC20) return SENSOR_MEC20;
+  Globals::webDebug("[Config] Invalid sensor_type in prefs; using default SENSOR_THCS");
+  return SENSOR_THCS;
+}
 
 void loadPreferences() {
   using namespace WifiManager;
