@@ -1,3 +1,4 @@
+
 #include "Config.h"
 #include "Globals.h"
 #include "THCSensor.h"
@@ -6,11 +7,11 @@
 #include "WifiManager.h"
 #include "MQTTManager.h"
 #include "WebUI.h"
-#include "Utils.h"         // [UPDATED] shared helpers (median/CRC)
+#include "Utils.h"         
 #include "html.h"
 #include "WifiScan.h"
-#include "ActiveSensor.h"  // [ADDED] router for active sensor type
-#include "MEC20Sensor.h"   // [ADDED] ensure available link-time
+#include "ActiveSensor.h"  
+#include "MEC20Sensor.h"   
 
 void setup() {
   pinMode(RS485_DE_PIN, OUTPUT);
@@ -23,8 +24,6 @@ void setup() {
   delay(100);
   Serial.println();
   Serial.printf("--- %s v%s Booting ---\n", FW_NAME, FW_VERSION);
-  Serial.printf("[Boot] Build: %u (Unix time), FW: %s, Version: %s\n",
-                BUILD_UNIX_TIME, FW_NAME, FW_VERSION);
 
   Globals::begin();
 
