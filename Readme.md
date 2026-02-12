@@ -4,7 +4,7 @@
 > **Firmware:** `PC_THCS_V1` (Pirate Controls)  
 > **Current firmware README version:**   
 > **Author / Repo:** [@n0socialskills](https://github.com/n0socialskills) · [PC-THCS-V1-ESP32](https://github.com/n0socialskills/PC-THCS-V1-ESP32)  
-> **Build timestamp token:** `BUILD_UNIX_TIME` (see `Config.h`)
+
 
 ---
 
@@ -1095,7 +1095,7 @@ Main file:
   - `setup()`:
 
     - Initializes RS485 control pins + factory reset pin.  
-    - Starts Serial and logs boot banner + build info (`BUILD_UNIX_TIME`).  
+    - Starts Serial and logs boot banner + build info 
     - Calls `Globals::begin()` (FS, identity).  
       - NOTE: Globals::begin() intentionally no longer initializes RS485 UART — the active sensor driver (THCS or MEC20) initializes UART in its begin() to guarantee correct baud/parity after sensor type selection.  
     - Calls `loadPreferences()` to load Wi‑Fi, MQTT, calibration, system prefs.  
