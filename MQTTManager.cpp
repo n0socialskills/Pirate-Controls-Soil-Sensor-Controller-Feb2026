@@ -285,7 +285,7 @@ static bool connectClient() {
   if (ok) {
     Globals::mqtt.publish(willTopic.c_str(), "online", true);
     DynamicJsonDocument d(256);
-    d["fw"] = FW_NAME; d["ver"] = FW_VERSION; d["build"] = (uint32_t)BUILD_UNIX_TIME;
+    d["fw"] = FW_NAME; d["ver"] = FW_VERSION;
     d["chipid"] = Globals::chipIdStr; d["mac"] = Globals::macStr;
     d["timezone_offset"] = gmtOffset_sec; d["dst_offset"] = daylightOffset_sec;
     String meta; serializeJson(d, meta);
