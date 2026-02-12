@@ -4,11 +4,8 @@
 #include <Arduino.h>
 
 // Build/Version
-#define FW_NAME     "PC_Soil_Sensor_Controller "
-#define FW_VERSION  "1.0"
-#ifndef BUILD_UNIX_TIME
-#define BUILD_UNIX_TIME 1733788800UL
-#endif
+#define FW_NAME "PC_Soil_Sensor_Controller "
+#define FW_VERSION "1.0"
 
 #ifndef POST_TX_DELAY_MS
 #define POST_TX_DELAY_MS 2
@@ -41,7 +38,7 @@ extern int  daylightOffset_sec;
 extern const uint32_t WIFI_CONNECT_WINDOW_MS;
 extern const uint32_t WIFI_AP_RETRY_PERIOD_MS;
 extern const uint32_t AP_DISABLE_DELAY_MS;
-extern const char* AP_SSID_DEFAULT;       // [UPDATED] "PC Soil Sensor Setup"
+extern const char* AP_SSID_DEFAULT;       // [UPDATED] "PC Sensor Controller Setup"
 extern const char* AP_PASSWORD_DEFAULT;   // [UPDATED] "Controls"
 
 // History storage
@@ -80,7 +77,6 @@ extern float deltaPWEC;
 
 // Sensor poll interval (ms)
 extern uint32_t sensorIntervalMs;
-extern bool historyEnabled;
 
 // Debug + WebSerial
 extern bool debugMode;
