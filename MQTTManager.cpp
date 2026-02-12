@@ -171,8 +171,9 @@ static void publishStateForHA(float vwc, float tempC, float pwec, int ec_uS,
       int s2 = userBase.indexOf('/', s1 + 1);
       String seg0 = userBase.substring(0, s1);
       String segRest = (s2 >= 0) ? userBase.substring(s2) : "";
+      String mac6 = getPermanentMac6();
       String sensorSeg = (sensorType == SENSOR_MEC20) ? "mec20" : "thcs";
-      userBase = seg0 + "/" + sensorSeg + segRest;
+      userBase = seg0 + "/" + mac6 + "/" + sensorSeg + segRest;   // UPDATED: insert MAC6 in path
     }
     String eff = userBase;
     if (sensorNumber >= 1 && sensorNumber <= 255) eff += "/s" + String(sensorNumber);
@@ -196,8 +197,9 @@ static void publishStateForHA(float vwc, float tempC, float pwec, int ec_uS,
       int s2u = userStructured.indexOf('/', s1u + 1);
       String seg0u = userStructured.substring(0, s1u);
       String segRestu = (s2u >= 0) ? userStructured.substring(s2u) : "";
+      String mac6 = getPermanentMac6();
       String sensorSegu = (sensorType == SENSOR_MEC20) ? "mec20" : "thcs";
-      userStructured = seg0u + "/" + sensorSegu + segRestu;
+      userStructured = seg0u + "/" + mac6 + "/" + sensorSegu + segRestu; // UPDATED
     }
     if (sensorNumber >= 1 && sensorNumber <= 255 && userStructured.length()) userStructured += "/s" + String(sensorNumber);
 
