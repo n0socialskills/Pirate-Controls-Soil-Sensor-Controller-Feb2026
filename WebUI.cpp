@@ -94,14 +94,19 @@ void WebUI::sendStatusWS() {
       int s2 = effTopic.indexOf('/', s1 + 1);
       String seg0 = effTopic.substring(0, s1);                    // e.g. "sensor"
       String segRest = (s2 >= 0) ? effTopic.substring(s2) : "";   // rest after second segment
-      String sensorSeg = (sensorType == SENSOR_MEC20) ? "mec20" : "thcs"; // [ADDED]
-      effTopic = seg0 + "/" + sensorSeg + segRest;                // e.g. "sensor/mec20"
+
+      // Compute MAC6 locally (since getPermanentMac6 is not visible here)
+      String mac6 = resolveMacOrFallback();
+      mac6.replace(":", "");
+      mac6.toUpperCase();
+      if (mac6.length() >= 6) mac6 = mac6.substring(mac6.length() - 6);
+
+      String sensorSeg = (sensorType == SENSOR_MEC20) ? "mec20" : "thcs";
+      effTopic = seg0 + "/" + mac6 + "/" + sensorSeg + segRest;   // sensor/<MAC6>/<type>/...
     }
-    if (sensorNumber >= 1 && sensorNumber <= 255 && effTopic.length()) {
-      effTopic += "/s" + String(sensorNumber);
-    }
+    if (sensorNumber >= 1 && sensorNumber <= 255) effTopic += "/s" + String(sensorNumber);
   }
-  d["mqtt_topic"] = effTopic; // [UPDATED]
+  d["mqtt_topic"] = effTopic; // updated
 
   d["sensor_error"] = ActiveSensor::hasError();
 
