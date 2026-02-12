@@ -20,7 +20,7 @@ const char* AP_PASSWORD_DEFAULT = "Controls";         // [UPDATED]
 
 // History
 const uint32_t HISTORY_INTERVAL_MS = 300000;
-const size_t   HISTORY_MAX_RECORDS = 432;
+const size_t   HISTORY_MAX_RECORDS = 2016;
 const char*    HISTORY_FILE = "/hist_v1.bin";
 
 // MQTT defaults
